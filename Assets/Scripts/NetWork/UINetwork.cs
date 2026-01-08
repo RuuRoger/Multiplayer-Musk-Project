@@ -7,5 +7,11 @@ namespace Assets.Scripts.NetWork
     {
         // ================================================== FIELDS ==================================================
         [SerializeField] private GameObject m_connecitngPanel;
+
+        // ================================================== PUBLIC METHODS ==================================================
+        public void LoadingComplete()
+        {
+            m_connecitngPanel.SetActive(false);
+        }
     }
 }
