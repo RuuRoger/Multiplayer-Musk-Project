@@ -35,11 +35,13 @@ namespace Assets.Scripts.Player
         private void OnEnable()
         {
             m_moveAction.action.Enable();
+            m_jumpAction.action.Enable();
         }
 
         private void OnDisable()
         {
             m_moveAction.action.Disable();
+            m_jumpAction.action.Disable();
         }
 
         private void Update()
