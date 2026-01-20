@@ -54,16 +54,33 @@ namespace Assets.Scripts.Player
             m_moveInput = m_moveAction.action.ReadValue<Vector2>();
             Vector3 inputDirection = new Vector3(m_moveInput.x, 0f, m_moveInput.y);
 
-            // This is "important" because control "accidental movement".
+            // Horizontal movement
+            Vector3 moveDirection = Vector3.zero;
             if (inputDirection.sqrMagnitude > 0.1f)
             {
-                // The method "TransformDirection()" transform direction from local space. ¡READ THE TOOLTIP IN INTELLISENSE!
-                Vector3 moveDirection = transform.TransformDirection(inputDirection.normalized);
-
+                moveDirection = transform.TransformDirection(inputDirection.normalized);
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_speedRotation * Time.deltaTime);
-                m_characterController.Move(moveDirection * m_speed * Time.deltaTime);
             }
+
+            // Jump
+            if (m_characterController.isGrounded)
+            {
+                if (m_verticalVelocity < 0) 
+                {
+                    m_verticalVelocity = -2f; // This force to stay in ground. Good tip.
+                }
+
+                if (m_jumpAction.action.triggered)
+                {
+                    m_verticalVelocity = m_jumpForce;
+                }
+            }
+            m_verticalVelocity += GRAVITY * Time.deltaTime;
+
+            // Horizontal + vertical movement
+            Vector3 totalMove = (moveDirection * m_speed + Vector3.up * m_verticalVelocity) * Time.deltaTime;
+            m_characterController.Move(totalMove);
         }
     }
 }
