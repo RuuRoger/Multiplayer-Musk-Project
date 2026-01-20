@@ -13,11 +13,15 @@ namespace Assets.Scripts.Player
     {
         // ================================================== FIELDS ==================================================
         //'Actions Map' about InputSystem
+        private const float GRAVITY = -9.81f;
         [SerializeField] private InputActionReference m_moveAction;
+        [SerializeField] private InputActionReference m_jumpAction;
         [SerializeField] private float m_speed = 5f;
         [SerializeField] private float m_speedRotation = 1.5f;
+        [SerializeField] private float m_jumpForce = 5f;
         private CharacterController m_characterController;
         private Vector2 m_moveInput;
+        private float m_verticalVelocity = 0f;
 
         // ================================================== METHODS ==================================================
         private void Awake()
