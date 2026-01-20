@@ -45,12 +45,19 @@ namespace Assets.Scripts.Player
 
         private void HandleMovement()
         {
-          m_moveInput = m_moveAction.action.ReadValue<Vector2>();
+            m_moveInput = m_moveAction.action.ReadValue<Vector2>();
+            Vector3 inputDirection = new Vector3(m_moveInput.x, 0f, m_moveInput.y);
 
-          Vector3 movement = new Vector3(m_moveInput.x, 0f, m_moveInput.y);
-          movement = transform.TransformDirection(movement);
-          m_characterController.Move(movement * m_speed * Time.deltaTime);
+            // This is "important" because control "accidental movement".
+            if (inputDirection.sqrMagnitude > 0.1f)
+            {
+                // The method "TransformDirection()" transform direction from local space. ¡READ THE TOOLTIP IN INTELLISENSE!
+                Vector3 moveDirection = transform.TransformDirection(inputDirection.normalized);
+
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_speedRotation * Time.deltaTime);
+                m_characterController.Move(moveDirection * m_speed * Time.deltaTime);
+            }
         }
-
     }
 }
