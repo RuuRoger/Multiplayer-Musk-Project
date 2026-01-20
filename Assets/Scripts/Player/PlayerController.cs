@@ -15,6 +15,7 @@ namespace Assets.Scripts.Player
         //'Actions Map' about InputSystem
         [SerializeField] private InputActionReference m_moveAction;
         [SerializeField] private float m_speed = 5f;
+        [SerializeField] private float m_speedRotation = 1.5f;
         private CharacterController m_characterController;
         private Vector2 m_moveInput;
 
