@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,10 @@ namespace Assets.Scripts.Player
         private CharacterController m_characterController;
         private Vector2 m_moveInput;
         private float m_verticalVelocity = 0f;
+
+        // ================================================== EVENTS ==================================================
+        public static event Action<Vector2> OnPlayerMove;
+        public static event Action OnPlayerJump;
 
         // ================================================== METHODS ==================================================
         private void Awake()
@@ -51,6 +56,7 @@ namespace Assets.Scripts.Player
         {
             m_moveInput = m_moveAction.action.ReadValue<Vector2>();
             Vector3 inputDirection = new Vector3(m_moveInput.x, 0f, m_moveInput.y);
+            OnPlayerMove?.Invoke(m_moveInput);
 
             // Horizontal movement
             Vector3 moveDirection = Vector3.zero;
@@ -72,6 +78,7 @@ namespace Assets.Scripts.Player
                 if (m_jumpAction.action.triggered)
                 {
                     m_verticalVelocity = m_jumpForce;
+                    OnPlayerJump?.Invoke();
                 }
             }
             m_verticalVelocity += GRAVITY * Time.deltaTime;
