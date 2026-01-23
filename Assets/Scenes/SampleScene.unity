@@ -172,9 +172,17 @@ PrefabInstance:
       value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
+    - target: {fileID: 5866666021909216657, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: c6f06c76b4a4d0c458eba67b144a0e56, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -187,11 +195,11 @@ PrefabInstance:
       addedObject: {fileID: 330585546}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1799348418}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1799348416}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1799348421}
   m_SourcePrefab: {fileID: 100100000, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
 --- !u!1 &321885338
 GameObject:
@@ -648,7 +656,12 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &1799348418
+--- !u!4 &1799348420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
+  m_PrefabInstance: {fileID: 251770802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1799348421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -657,19 +670,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1799348415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc8174fe02449e4087b0cad42205b86, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.PlayerController
-  m_moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_speed: 5
-  m_speedRotation: 1.5
-  m_jumpForce: 5
---- !u!4 &1799348420 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e4b7b3870abd6a44a6e084f85a1fc19, type: 3}
-  m_PrefabInstance: {fileID: 251770802}
-  m_PrefabAsset: {fileID: 0}
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
